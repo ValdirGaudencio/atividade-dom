@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 </head>
 <body>
-    <input type="number" id="idade" placeholder="Digite sua idade">
-    <button id="verificar">Verificar</button>
-    <p id="resultado"></p>
 
-    <script>
-    const botao = document.getElementById('verificar');
+<button id="bnt">Gostei</button>
 
-   botao.addEventListener('click',
-   function(){
-    const idade = document.getElementById('idade').value;
-    const resultado = document.getElementById('resultado');
+<p id="contador">
+total de cliques: 0
+</p>
 
-    if(idade >= 18){
-        resultado.innerHTML = 'Maior de idade, Entrada permitida';
-        resultado.styler.color = 'green';
-    }else{
-        resultado.innerHTML = 'Menor de idade, Entrada negada';
-        resultado.style.color = 'red';
-    }
-})
-     </script>   
+<script>
+let total = 0;
+
+const botao = document.getElementById("bnt");
+const texto = document.getElementById("contador");
+
+botao.addEventListener("click", function(){
+    total++;
+    texto.textContent = "total de cliques: " + total;
+});
+</script>
+
 </body>
 </html>
