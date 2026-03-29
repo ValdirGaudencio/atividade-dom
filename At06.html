@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Missões do Jogador</title>
+
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    li {
+      cursor: pointer;
+      margin: 5px 0;
+    }
+
+    
+    .concluida {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Missões do Jogo 🎮</h2>
+
+  <input type="text" id="missao" placeholder="Digite uma missão">
+  <button id="adicionar">Adicionar</button>
+
+ 
+  <ul id="lista"></ul>
+
+  <script>
+
+    let input = document.getElementById("missao");
+    let botao = document.getElementById("adicionar");
+    let lista = document.getElementById("lista");
+
+   
+    botao.addEventListener("click", function() {
+
+      let texto = input.value;
+
+      if (texto === "") {
+        alert("Digite uma missão!");
+        return;
+      }
+
+     
+      let item = document.createElement("li");
+      item.textContent = texto;
+
+      item.addEventListener("click", function() {
+
+      
+        item.classList.toggle("concluida");
+
+      });
+
+     
+      lista.appendChild(item);
+
+      
+      input.value = "";
+    });
+
+  </script>
+
+</body>
+</html>
