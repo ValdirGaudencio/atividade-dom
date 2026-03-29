@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro Profissional</title>
+
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    .erro {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .sucesso {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    input {
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Cadastro 🚀</h2>
+
+  <form id="formulario">
+
+    <label>Nome:</label>
+    <input type="text" id="nome">
+    <span id="erroNome" class="erro"></span>
+
+    <label>Email:</label>
+    <input type="text" id="email">
+    <span id="erroEmail" class="erro"></span>
+
+    <label>Idade:</label>
+    <input type="number" id="idade">
+    <span id="erroIdade" class="erro"></span>
+
+    <label>Senha:</label>
+    <input type="password" id="senha">
+    <span id="erroSenha" class="erro"></span>
+
+    <label>Confirmar Senha:</label>
+    <input type="password" id="confirmarSenha">
+    <span id="erroConfirmar" class="erro"></span>
+
+    <button type="submit">Cadastrar</button>
+
+  </form>
+
+  <p id="mensagemFinal"></p>
+
+  <script>
+
+    function validarFormulario(nome, email, idade, senha, confirmarSenha) {
+
+      let valido = true;
+
+      document.getElementById("erroNome").textContent = "";
+      document.getElementById("erroEmail").textContent = "";
+      document.getElementById("erroIdade").textContent = "";
+      document.getElementById("erroSenha").textContent = "";
+      document.getElementById("erroConfirmar").textContent = "";
+
+   
+      if (nome === "") {
+        document.getElementById("erroNome").textContent = "Nome é obrigatório!";
+        valido = false;
+      }
+
+      if (!email.includes("@")) {
+        document.getElementById("erroEmail").textContent = "Email inválido!";
+        valido = false;
+      }
+
+      
+      if (idade < 18 || isNaN(idade)) {
+        document.getElementById("erroIdade").textContent = "Você deve ter 18 anos ou mais!";
+        valido = false;
+      }
+
+     
+      if (senha.length < 8) {
+        document.getElementById("erroSenha").textContent = "A senha deve ter no mínimo 8 caracteres!";
+        valido = false;
+      }
+
+    
+      if (senha !== confirmarSenha) {
+        document.getElementById("erroConfirmar").textContent = "As senhas não coincidem!";
+        valido = false;
+      }
+
+      return valido;
+    }
+
+ 
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      let nome = document.getElementById("nome").value;
+      let email = document.getElementById("email").value;
+      let idade = Number(document.getElementById("idade").value);
+      let senha = document.getElementById("senha").value;
+      let confirmarSenha = document.getElementById("confirmarSenha").value;
+
+      let mensagem = document.getElementById("mensagemFinal");
+
+      mensagem.textContent = "";
+      mensagem.className = "";
+
+    
+      if (validarFormulario(nome, email, idade, senha, confirmarSenha)) {
+
+        mensagem.textContent = "Cadastro realizado com sucesso! ✅";
+        mensagem.className = "sucesso";
+
+   
+        document.getElementById("formulario").reset();
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
