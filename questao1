@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contador de Likes</title>
+</head>
+<body>
+
+  <h2 id="contador">Total de cliques: 0</h2>
+  <button id="botao">Gostei 👍</button>
+
+  <script>
+    // Variável para armazenar os cliques
+    let totalCliques = 0;
+
+    // Selecionando os elementos do DOM
+    const contador = document.getElementById("contador");
+    const botao = document.getElementById("botao");
+
+    // Evento de clique
+    botao.addEventListener("click", function() {
+      
+      // Operador de incremento
+      totalCliques++;
+
+      // Alterando o conteúdo na tela
+      contador.textContent = "Total de cliques: " + totalCliques;
+    });
+
+  </script>
+
+</body>
+</html>
