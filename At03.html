@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora da Oficina</title>
+</head>
+<body>
+
+  <h2>Calculadora de Orçamento 🔧</h2>
+
+  
+  <input type="number" id="valor1" placeholder="Digite o primeiro valor">
+  
+  <select id="operacao">
+    <option value="soma">+</option>
+    <option value="subtracao">-</option>
+    <option value="multiplicacao">*</option>
+    <option value="divisao">/</option>
+  </select>
+
+  <input type="number" id="valor2" placeholder="Digite o segundo valor">
+
+  <br><br>
+
+  <button id="calcular">Calcular</button>
+
+  <h3 id="resultado">Resultado: </h3>
+
+  <script>
+
+  
+    function calcular(v1, v2, operacao) {
+      let resultado;
+
+     
+      if (operacao === "soma") {
+        resultado = v1 + v2;
+      } else if (operacao === "subtracao") {
+        resultado = v1 - v2;
+      } else if (operacao === "multiplicacao") {
+        resultado = v1 * v2;
+      } else if (operacao === "divisao") {
+        if (v2 === 0) {
+          return "Erro: divisão por zero";
+        }
+        resultado = v1 / v2;
+      }
+
+      return resultado;
+    }
+
+  
+    document.getElementById("calcular").addEventListener("click", function() {
+
+      
+      let v1 = Number(document.getElementById("valor1").value);
+      let v2 = Number(document.getElementById("valor2").value);
+      let op = document.getElementById("operacao").value;
+
+ 
+      let resultadoFinal = calcular(v1, v2, op);
+
+   
+      document.getElementById("resultado").textContent = "Resultado: " + resultadoFinal;
+    });
+
+  </script>
+
+</body>
+</html>
