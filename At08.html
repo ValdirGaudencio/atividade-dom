@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Adivinhação</title>
+
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    #mensagem {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎯 Adivinhe o Número (1 a 20)</h2>
+
+  <input type="number" id="palpite" placeholder="Digite um número">
+  <button id="tentar">Tentar</button>
+  <button id="reiniciar">Reiniciar</button>
+
+  <p id="mensagem"></p>
+  <p id="tentativas">Tentativas: 0</p>
+
+  <script>
+
+  
+    let numeroSecreto = gerarNumero();
+    let tentativas = 0;
+
+  
+    function gerarNumero() {
+      return Math.floor(Math.random() * 20) + 1;
+    }
+
+    
+    document.getElementById("tentar").addEventListener("click", function() {
+
+      let palpite = Number(document.getElementById("palpite").value);
+      let mensagem = document.getElementById("mensagem");
+
+   
+      if (isNaN(palpite) || palpite < 1 || palpite > 20) {
+        mensagem.textContent = "Digite um número entre 1 e 20!";
+        return;
+      }
+
+      tentativas++;
+
+   
+      if (palpite > numeroSecreto) {
+        mensagem.textContent = "Muito alto ⬆️";
+      } else if (palpite < numeroSecreto) {
+        mensagem.textContent = "Muito baixo ⬇️";
+      } else {
+        mensagem.textContent = "Acertou! 🎉";
+      }
+
+   
+      document.getElementById("tentativas").textContent = "Tentativas: " + tentativas;
+
+    });
+
+    document.getElementById("reiniciar").addEventListener("click", function() {
+
+      numeroSecreto = gerarNumero();
+      tentativas = 0;
+
+      document.getElementById("mensagem").textContent = "";
+      document.getElementById("tentativas").textContent = "Tentativas: 0";
+      document.getElementById("palpite").value = "";
+
+    });
+
+  </script>
+
+</body>
+</html>
