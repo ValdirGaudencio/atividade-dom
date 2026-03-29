@@ -10,20 +10,20 @@
   <button id="botao">Gostei 👍</button>
 
   <script>
-    // Variável para armazenar os cliques
+    
     let totalCliques = 0;
 
-    // Selecionando os elementos do DOM
+  
     const contador = document.getElementById("contador");
     const botao = document.getElementById("botao");
 
-    // Evento de clique
+   
     botao.addEventListener("click", function() {
       
-      // Operador de incremento
+     
       totalCliques++;
 
-      // Alterando o conteúdo na tela
+   
       contador.textContent = "Total de cliques: " + totalCliques;
     });
 
