@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabuada</title>
+</head>
+<body>
+
+  <h2>Gerador de Tabuada 📊</h2>
+
+
+  <input type="number" id="numero" placeholder="Digite um número">
+
+  <button id="gerar">Gerar Tabuada</button>
+
+ 
+  <ul id="resultado"></ul>
+
+  <script>
+
+    
+    function gerarTabuada(num) {
+
+      let lista = document.getElementById("resultado");
+
+      
+      lista.innerHTML = "";
+
+   
+      for (let i = 1; i <= 10; i++) {
+
+        let resultado = num * i;
+
+        
+        let item = document.createElement("li");
+
+        item.textContent = num + " x " + i + " = " + resultado;
+
+        
+        lista.appendChild(item);
+      }
+    }
+
+    document.getElementById("gerar").addEventListener("click", function() {
+
+      let num = Number(document.getElementById("numero").value);
+
+      if (isNaN(num)) {
+        alert("Digite um número válido!");
+        return;
+      }
+
+     
+      gerarTabuada(num);
+    });
+
+  </script>
+
+</body>
+</html>
