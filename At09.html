@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Votação da Turma</title>
+
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    button {
+      margin: 5px;
+    }
+
+    #resultadoFinal {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Votação para Representante 🗳️</h2>
+
+
+  <button id="c1">Ana</button>
+  <button id="c2">Bruno</button>
+  <button id="c3">Carlos</button>
+
+  <p>Ana: <span id="v1">0</span></p>
+  <p>Bruno: <span id="v2">0</span></p>
+  <p>Carlos: <span id="v3">0</span></p>
+
+  <button id="resultado">Ver Resultado</button>
+
+  <p id="resultadoFinal"></p>
+
+  <script>
+
+ 
+    let votos1 = 0;
+    let votos2 = 0;
+    let votos3 = 0;
+
+ 
+    function atualizarTela() {
+      document.getElementById("v1").textContent = votos1;
+      document.getElementById("v2").textContent = votos2;
+      document.getElementById("v3").textContent = votos3;
+    }
+
+  
+    document.getElementById("c1").addEventListener("click", function() {
+      votos1++;
+      atualizarTela();
+    });
+
+    document.getElementById("c2").addEventListener("click", function() {
+      votos2++;
+      atualizarTela();
+    });
+
+    document.getElementById("c3").addEventListener("click", function() {
+      votos3++;
+      atualizarTela();
+    });
+
+  
+    function verificarVencedor() {
+
+      let resultado = document.getElementById("resultadoFinal");
+
+      if (votos1 > votos2 && votos1 > votos3) {
+        resultado.textContent = "Ana está ganhando! 🏆";
+      } else if (votos2 > votos1 && votos2 > votos3) {
+        resultado.textContent = "Bruno está ganhando! 🏆";
+      } else if (votos3 > votos1 && votos3 > votos2) {
+        resultado.textContent = "Carlos está ganhando! 🏆";
+      } else {
+        resultado.textContent = "Está empatado! 🤝";
+      }
+
+    }
+
+
+    document.getElementById("resultado").addEventListener("click", verificarVencedor);
+
+  </script>
+
+</body>
+</html>
